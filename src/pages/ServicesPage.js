@@ -1,13 +1,12 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Microscope, 
-  HeartPulse, 
-  Activity, 
-  Stethoscope, 
-  Scissors, 
-  PawPrint, 
-  ShoppingBag, 
+import {
+  Microscope,
+  HeartPulse,
+  Activity,
+  Stethoscope,
+  PawPrint,
+  ShoppingBag,
   Sparkles,
   ShieldCheck,
   Zap,

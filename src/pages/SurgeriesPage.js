@@ -1,16 +1,17 @@
+```
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Scissors, 
   ShieldCheck, 
   Stethoscope, 
   HeartPulse, 
   Activity, 
   Sparkles,
   ChevronRight,
-  ChevronLeft,
-  Expand,
-  Info
+  X,
+  Calendar,
+  PhoneCall,
+  ArrowUpRight
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
