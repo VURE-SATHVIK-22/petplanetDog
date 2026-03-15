@@ -1,4 +1,3 @@
-```
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -8,7 +7,9 @@ import {
   Activity, 
   Sparkles,
   ChevronRight,
+  ChevronLeft,
   X,
+  Expand,
   Calendar,
   PhoneCall,
   ArrowUpRight
