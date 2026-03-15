@@ -71,22 +71,24 @@ const Navbar = () => {
       const ctx = gsap.context(() => {
         if (isScrolled) {
           gsap.to(navRef.current, {
-            backgroundColor: "rgba(250, 247, 242, 0.95)",
-            backdropFilter: "blur(20px)",
-            borderBottom: "1px solid rgba(0, 0, 0, 0.05)",
-            boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.05)",
+            backgroundColor: "rgba(255, 255, 255, 0.7)",
+            backdropFilter: "blur(24px) saturate(180%)",
+            WebkitBackdropFilter: "blur(24px) saturate(180%)",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.3)",
+            boxShadow: "0 4px 30px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.5)",
             height: "5.5rem",
-            duration: 0.6,
+            duration: 0.5,
             ease: "expo.out"
           });
         } else {
           gsap.to(navRef.current, {
-            backgroundColor: "rgba(250, 247, 242, 0)",
-            backdropFilter: "blur(0px)",
+            backgroundColor: "rgba(255, 255, 255, 0)",
+            backdropFilter: "blur(0px) saturate(100%)",
+            WebkitBackdropFilter: "blur(0px) saturate(100%)",
             borderBottom: "1px solid transparent",
             boxShadow: "none",
             height: "7rem",
-            duration: 0.6,
+            duration: 0.5,
             ease: "expo.out"
           });
         }
@@ -148,8 +150,8 @@ const Navbar = () => {
               onClick={() => handleLinkClick({ type: 'link', href: '/' })}
             >
               <div className="flex flex-col">
-                <span className="font-display text-2xl md:text-3xl font-bold text-slate-900 leading-none tracking-tight group-hover:text-gold-500 transition-colors duration-300">Pet Planet</span>
-                <span className="text-[9px] font-bold text-gold-500 leading-none tracking-[0.3em] uppercase mt-2">Veterinary Sanctuary</span>
+                <span className="font-display text-2xl md:text-3xl font-bold text-slate-900 leading-none tracking-tight group-hover:text-gold-500 transition-colors duration-300">Dr. T Suresh Babu</span>
+                <span className="text-[9px] font-bold text-gold-500 leading-none tracking-[0.3em] uppercase mt-2">Veterinary Clinic · Vanasthalipuram</span>
               </div>
             </div>
 
@@ -190,11 +192,13 @@ const Navbar = () => {
       />
 
       {/* Mobile Menu Panel */}
-      <div className={`fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-sand-100 z-[1001] lg:hidden transform transition-transform duration-500 ease-expo-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'} p-8 flex flex-col`}>
+      <div className={`fixed top-0 right-0 bottom-0 w-[85%] max-w-sm z-[1001] lg:hidden transform transition-transform duration-500 ease-expo-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'} p-8 flex flex-col`}
+        style={{ background: 'rgba(255,255,255,0.78)', backdropFilter: 'blur(32px) saturate(180%)', WebkitBackdropFilter: 'blur(32px) saturate(180%)', borderLeft: '1px solid rgba(255,255,255,0.5)' }}
+      >
         <div className="flex justify-between items-center mb-12">
           <div className="flex flex-col">
-            <span className="font-display text-2xl font-bold text-slate-900 leading-none">Pet Planet</span>
-            <span className="text-[8px] font-bold text-gold-500 tracking-[0.2em] uppercase mt-1">Vanasthalipuram</span>
+            <span className="font-display text-2xl font-bold text-slate-900 leading-none">Dr. T Suresh Babu</span>
+            <span className="text-[8px] font-bold text-gold-500 tracking-[0.2em] uppercase mt-1">Veterinary Clinic · Vanasthalipuram</span>
           </div>
           <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-slate-900 hover:rotate-90 transition-transform duration-300">
             <X className="w-8 h-8" />

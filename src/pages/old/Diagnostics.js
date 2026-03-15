@@ -44,7 +44,7 @@ const Diagnostics = () => {
                     trigger: cat,
                     start: "top top",
                     pin: true,
-                    pinSpacing: false,
+                    pinSpacing: true,
                     snap: 1,
                     end: "bottom top"
                 });

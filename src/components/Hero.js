@@ -1,110 +1,167 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowDown } from 'lucide-react';
+import { ArrowRight, Sparkles, Activity, ShieldCheck } from 'lucide-react';
+import GlassButton from '../components/GlassButton';
+import GlassCard from '../components/GlassCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-    const heroRef = useRef(null);
-    const titleRef = useRef(null);
-    const subtitleRef = useRef(null);
-    const imageRef = useRef(null);
-    const ctaRef = useRef(null);
+  const containerRef = useRef(null);
+  const titleRef = useRef(null);
+  const glassRef = useRef(null);
+  const orb1Ref = useRef(null);
+  const orb2Ref = useRef(null);
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            const tl = gsap.timeline({ defaults: { ease: "expo.out", duration: 2 } });
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Intial States Cleanup & Reveal Fix - FASTER LOAD
+      const tl = gsap.timeline({ defaults: { ease: "expo.out", duration: 0.8 } });
+      
+      tl.fromTo('.hero-reveal', 
+        { y: 60, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.05, clearProps: "all" }
+      )
+      .fromTo(glassRef.current,
+        { rotateY: -15, rotateX: 5, scale: 0.95, opacity: 0 },
+        { rotateY: 0, rotateX: 0, scale: 1, opacity: 1, duration: 1.2, clearProps: "transform" },
+        "-=0.5"
+      );
 
-            // Initial state
-            gsap.set([titleRef.current.children, subtitleRef.current, ctaRef.current], { 
-                y: 100, 
-                opacity: 0 
-            });
-            gsap.set(imageRef.current, { scale: 1.2, opacity: 0 });
+      // Parallax Orbs (Cinematic Depth)
+      gsap.to(orb1Ref.current, {
+        y: -150,
+        x: -50,
+        scale: 1.2,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        }
+      });
 
-            // Entrance animation
-            tl.to(imageRef.current, { scale: 1, opacity: 1, duration: 3 })
-              .to(titleRef.current.children, { y: 0, opacity: 1, stagger: 0.1 }, "-=2.5")
-              .to(subtitleRef.current, { y: 0, opacity: 1 }, "-=1.8")
-              .to(ctaRef.current, { y: 0, opacity: 1 }, "-=1.5");
+      gsap.to(orb2Ref.current, {
+        y: 250,
+        x: 50,
+        scale: 1.3,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.5,
+        }
+      });
 
-            // Parallax effect
-            gsap.to(imageRef.current, {
-                yPercent: 30,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: heroRef.current,
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: true
-                }
-            });
-        });
-        return () => ctx.revert();
-    }, []);
+      // Floating Effect with magnetic pull setup
+      gsap.to(glassRef.current, {
+        y: -30,
+        rotation: 2,
+        duration: 5,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true
+      });
+    }, containerRef);
 
-    return (
-        <section ref={heroRef} className="relative min-h-[110vh] w-full flex items-center px-6 lg:px-20 overflow-hidden bg-sand-100">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-sand-100 z-10" />
-                <div className="absolute inset-0 bg-black/10 z-0" />
-                <img
-                    ref={imageRef}
-                    src="https://images.unsplash.com/photo-1581888227599-779811939961?auto=format&fit=crop&q=80&w=2000"
-                    alt="Clinical Veterinary Sanctuary"
-                    className="w-full h-full object-cover"
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section ref={containerRef} className="relative min-h-[90vh] flex items-center overflow-hidden bg-ios-bg">
+      {/* Dynamic Background Elements */}
+      <div ref={orb1Ref} className="absolute top-[10%] left-[-5%] w-[40vw] h-[40vw] rounded-full bg-ios-blue/10 blur-[120px] pointer-events-none" />
+      <div ref={orb2Ref} className="absolute bottom-[0%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-ios-blue/5 blur-[150px] pointer-events-none" />
+
+      <div className="section-container">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="space-y-12">
+            <div className="space-y-6">
+              <div className="hero-reveal inline-flex items-center gap-2 px-4 py-2 bg-ios-blue/5 backdrop-blur-md rounded-full border border-ios-blue/10">
+                <Sparkles size={14} className="text-ios-blue" />
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-ios-blue">Petplanet Dog Clinic</span>
+              </div>
+              
+              <div ref={titleRef} className="space-y-4">
+                <h1 className="hero-reveal text-gradient text-6xl md:text-7xl">
+                  Best Dog Clinic for <br />
+                  <span className="italic font-normal uppercase tracking-tighter">Surgical Excellence.</span>
+                </h1>
+                <p className="hero-reveal text-luxury text-xl max-w-lg">
+                  #1 Professional canine healthcare in Hyderabad with surgical excellence and diagnostic precision. Led by Dr. T Suresh Babu (MVSc).
+                </p>
+              </div>
+            </div>
+
+            <div className="hero-reveal flex flex-wrap gap-6 items-center">
+              <GlassButton variant="primary" className="!px-10">
+                Book Appointment
+                <ArrowRight size={18} />
+              </GlassButton>
+              <button className="group flex items-center gap-4 text-sm font-bold uppercase tracking-widest hover:text-ios-blue transition-colors">
+                Learn More
+                <div className="w-10 h-[1px] bg-ios-label/20 group-hover:w-16 group-hover:bg-ios-blue transition-all" />
+              </button>
+            </div>
+
+            <div className="hero-reveal flex gap-12 pt-8">
+              <div>
+                <p className="text-4xl font-bold font-display">4.7</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-ios-secondaryLabel mt-1">Justdial Rating</p>
+              </div>
+              <div className="w-[1px] h-12 bg-ios-label/10" />
+              <div>
+                <p className="text-4xl font-bold font-display">12y</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-ios-secondaryLabel mt-1">Clinical Legacy</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative perspective-1000">
+            <div ref={glassRef} className="relative z-10 glass-card-elite aspect-square p-4 flex items-center justify-center">
+              <div className="absolute inset-4 rounded-[2rem] overflow-hidden">
+                <img 
+                  src="/images/hero_dog_cinematic_1773573246596.png" 
+                  alt="Healthy Puppy at Petplanet Dog Clinic" 
+                  className="w-full h-full object-cover scale-110"
                 />
-            </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              </div>
 
-            {/* Content Container */}
-            <div className="relative z-20 max-w-screen-2xl mx-auto w-full pt-20">
-                <div className="grid lg:grid-cols-2 gap-12 items-end">
-                    <div className="max-w-4xl">
-                        <div ref={titleRef} className="overflow-hidden relative">
-                                    <h1 className="font-display text-[clamp(2.5rem,7vw,8rem)] leading-[0.95] text-slate-900 tracking-tight mb-4 relative z-10 font-bold">
-                                          <span className="block mb-6 text-gold-600 text-xs md:text-sm tracking-[0.4em] font-semibold uppercase">Dr. T Suresh Babu Presents</span>
-                                          <span className="block mb-2">Veterinary</span>
-                                          <span className="text-gold-500">Excellence.</span>
-                                        </h1>
-                          </div>
-                          
-                          <div ref={subtitleRef} className="mt-8 max-w-xl">
-                              <p className="text-xl md:text-2xl text-slate-600 font-light leading-relaxed">
-                                  Top-rated <span className="text-slate-900 font-semibold">dog clinic in Vanasthalipuram</span>. Led by Dr. T Suresh Babu, we provide premium veterinary care and advanced diagnostics in Hyderabad.
-                              </p>
-                          </div>
-
-                        <div ref={ctaRef} className="mt-12 flex flex-wrap items-center gap-8">
-                            <button className="premium-button bg-gold-500 text-white border border-gold-500">
-                                <span className="relative z-10">Initialize Consult —></span>
-                            </button>
-                            <button className="group flex items-center space-x-3 text-slate-900 font-display font-bold uppercase tracking-widest text-sm">
-                                <span className="relative z-10">Rapid Response</span>
-                                <div className="w-10 h-[1px] bg-gold-500 group-hover:w-16 transition-all duration-500" />
-                            </button>
-                        </div>
+              <div className="absolute top-12 -left-8 animate-float">
+                <GlassCard className="!p-6 !rounded-[2rem] shadow-glass-heavy border-white/20" hover={false}>
+                  <div className="flex items-center gap-4">
+                    <div className="bg-ios-blue text-white p-3 rounded-2xl">
+                      <Activity size={24} />
                     </div>
+                    <div>
+                      <p className="text-2xl font-bold leading-none">8k+</p>
+                      <p className="text-[10px] font-bold text-ios-secondaryLabel uppercase tracking-widest mt-1">Success Cases</p>
+                    </div>
+                  </div>
+                </GlassCard>
+              </div>
 
-                    {/* Aesthetic Floating Detail */}
-                      <div className="hidden lg:flex flex-col items-end space-y-8 pb-12">
-                          <div className="w-px h-32 bg-gold-500/30" />
-                          <div className="rotate-90 origin-right translate-y-32">
-                              <span className="font-display text-xs uppercase tracking-[0.5em] text-gold-500/60 whitespace-nowrap">
-                                  Standard of Excellence — Sanctuary
-                              </span>
-                          </div>
-                          <div className="flex flex-col items-center space-y-4 pt-48">
-                              <div className="w-12 h-12 rounded-full border border-gold-500/20 flex items-center justify-center animate-bounce">
-                                  <ArrowDown className="w-5 h-5 text-gold-500" />
-                              </div>
-                          </div>
-                      </div>
-                </div>
+              <div className="absolute bottom-12 -right-12 delay-1000 animate-float" style={{ animationDelay: '2s' }}>
+                <GlassCard className="!p-6 !rounded-[2rem] shadow-glass-heavy border-white/20" hover={false}>
+                  <div className="flex items-center gap-4">
+                    <div className="bg-ios-green text-white p-3 rounded-2xl">
+                      <ShieldCheck size={24} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold">Hygiene Gold</p>
+                      <p className="text-[9px] font-bold text-ios-secondaryLabel uppercase tracking-widest mt-1">Certified OT</p>
+                    </div>
+                  </div>
+                </GlassCard>
+              </div>
             </div>
-        </section>
-    );
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Hero;

@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import { 
-    ArrowUpRight, Zap, Sparkles, Activity, 
+    ArrowUpRight, Zap, Sparkles, 
     Waves, Microscope, 
     Stethoscope, Brain, Eye
 } from 'lucide-react';
@@ -54,9 +54,8 @@ const ServicesPage = () => {
                     trigger: panel,
                     start: "top top",
                     pin: true,
-                    pinSpacing: false,
-                    snap: 1,
-                    // end: "bottom top",
+                    pinSpacing: true,
+                    end: "bottom top",
                 });
 
                 // Animate content of each panel
@@ -94,43 +93,43 @@ const ServicesPage = () => {
     const mainServices = [
         {
             id: "01",
-            title: "Wellness & Longevity",
-            category: "Foundational Care",
-            description: "A symphony of preventative measures designed to extend vitality. We don't just treat; we architect a lifetime of health.",
-            image: "/images/WhatsApp Image 2026-01-23 at 11.58.30 PM.jpeg",
-            icon: Activity,
+            title: "Surgical Excellence",
+            category: "Critical Precision",
+            description: "Mastering complex procedures from Orthopedic Surgery to Caesarean Sections with state-of-the-art monitoring and rapid recovery protocols.",
+            image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=2000",
+            icon: Zap,
             details: [
-                { label: "Predictive Screening", value: "AI-Driven" },
-                { label: "Bio-Markers", value: "32+ Points" },
-                { label: "Longevity Plan", value: "Custom" }
+                { label: "Surgeries", value: "Complex" },
+                { label: "Recovery", value: "Guided" },
+                { label: "Tech", value: "Advanced" }
             ],
             color: "from-gold-500/20 to-transparent"
         },
         {
             id: "02",
-            title: "Surgical Mastery",
-            category: "Critical Precision",
-            description: "Where technology meets steady hands. Our surgical suites are cinematic stages of precision, empathy, and advanced recovery protocols.",
-            image: "/images/WhatsApp Image 2026-01-23 at 11.59.20 PM.jpeg",
-            icon: Zap,
+            title: "Advanced Diagnostics",
+            category: "Scientific Accuracy",
+            description: "Equipped with high-precision X-Ray and molecular blood analysis to uncover what remains unseen, ensuring early and accurate detection.",
+            image: "https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&q=80&w=2000",
+            icon: Microscope,
             details: [
-                { label: "Monitoring", value: "Real-time" },
-                { label: "Technique", value: "Micro-Invasive" },
-                { label: "Recovery", value: "Guided" }
+                { label: "Imaging", value: "X-Ray" },
+                { label: "Hematology", value: "Transfusion" },
+                { label: "Accuracy", value: "99.9%" }
             ],
             color: "from-slate-800/20 to-transparent"
         },
         {
             id: "03",
-            title: "Regenerative Therapy",
-            category: "Future Medicine",
-            description: "Harnessing the body's natural healing powers. From stem cell therapy to advanced laser treatments, we lead the frontier.",
-            image: "/images/WhatsApp Image 2026-01-23 at 11.59.21 PM.jpeg",
+            title: "Holistic Pet Grooming",
+            category: "Therapeutic Care",
+            description: "More than just aesthetics. Our therapeutic grooming sessions focus on skin health, coat vitality, and the overall happiness of your companion.",
+            image: "https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&q=80&w=1000",
             icon: Waves,
             details: [
-                { label: "Modality", value: "Multi-Wave" },
-                { label: "Cellular", value: "Verified" },
-                { label: "Impact", value: "Deep Tissue" }
+                { label: "Skin Health", value: "Verified" },
+                { label: "Coat Care", value: "Premium" },
+                { label: "Well-being", value: "Total" }
             ],
             color: "from-gold-600/20 to-transparent"
         }

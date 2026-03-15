@@ -21,8 +21,9 @@ export const useScrollAnimation = () => {
             ease: 'power3.out',
             scrollTrigger: {
               trigger: el,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse'
+              start: 'top 90%',
+              toggleActions: 'play none none none',
+              once: true,
             }
           }
         );
@@ -42,8 +43,9 @@ export const useScrollAnimation = () => {
             ease: 'power2.out',
             scrollTrigger: {
               trigger: container,
-              start: 'top 80%',
-              toggleActions: 'play none none reverse'
+              start: 'top 90%',
+              toggleActions: 'play none none none',
+              once: true,
             }
           }
         );
@@ -61,8 +63,9 @@ export const useScrollAnimation = () => {
             ease: 'back.out(1.7)',
             scrollTrigger: {
               trigger: el,
-              start: 'top 80%',
-              toggleActions: 'play none none reverse'
+              start: 'top 90%',
+              toggleActions: 'play none none none',
+              once: true,
             }
           }
         );

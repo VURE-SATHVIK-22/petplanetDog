@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Heart, Award, Users, ArrowRight, Medal, Star, Globe, Zap, Dog } from 'lucide-react';
+import { Heart, ArrowRight, Medal, Star, Globe, Zap, Dog } from 'lucide-react';
 import CinematicGallery from '../components/CinematicGallery';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -90,8 +90,10 @@ const AboutPage = () => {
                         end: () => `+=${scrollWidth}`,
                         scrub: 1,
                         pin: true,
+                        pinSpacing: true,
                         anticipatePin: 1,
                         invalidateOnRefresh: true,
+                        refreshPriority: 1
                     }
                 });
             }
@@ -115,11 +117,10 @@ const AboutPage = () => {
     }, []);
 
     const milestones = [
-        { year: '2008', title: 'The Alpha Vision', desc: 'Pet Planet was born in a small studio with one mission: uncompromising canine care.' },
-        { year: '2012', title: 'Canine Excellence', desc: 'Awarded "Best Dog Clinic in the Region" for our breakthroughs in canine genetics.' },
-        { year: '2015', title: 'Breed Wing', desc: 'Opened our state-of-the-art diagnostic wing with breed-specific imaging protocols.' },
-        { year: '2019', title: '10k Paws', desc: 'Celebrated a decade of service, having touched the lives of over 10,000 dogs.' },
-        { year: '2023', title: 'Global Dog Network', desc: 'Launching our nationwide mobile-care initiative specifically for working dog communities.' },
+        { year: '2008', title: 'The Vision', desc: 'Pet Planet Dog Clinic was established in Vanasthalipuram with a mission of uncompromising canine care.' },
+        { year: '2015', title: 'Advanced Diagnostics', desc: 'Expanded our services to include high-precision X-Ray and comprehensive blood transfusion protocols.' },
+        { year: '2019', title: 'Surgical Excellence', desc: 'Pioneered advanced orthopedic and caesarean sections, becoming a surgical landmark in local veterinary care.' },
+        { year: '2023', title: 'Holistic Mastery', desc: 'Integrated Pet Grooming and specialized vaccination centers for complete pet well-being.' },
     ];
 
     const achievements = [
@@ -144,15 +145,15 @@ const AboutPage = () => {
                         </span>
                     </div>
                     
-                    <h1 className="font-display text-[10vw] lg:text-[8vw] leading-[0.9] tracking-tight mb-12 font-bold text-slate-900">
-                        <div className="overflow-hidden">
+                    <h1 className="font-display text-[10vw] lg:text-[8vw] leading-[1.1] tracking-tight mb-12 font-bold text-slate-900">
+                        <div className="overflow-hidden pb-4">
                             <span className="hero-title-line block">Beyond</span>
                         </div>
-                        <div className="overflow-hidden flex justify-center gap-[3vw]">
+                        <div className="overflow-hidden flex justify-center gap-[3vw] pb-4">
                             <span className="hero-title-line block text-gold-500">Canine,</span>
                             <span className="hero-title-line block">Within</span>
                         </div>
-                        <div className="overflow-hidden">
+                        <div className="overflow-hidden pb-4">
                             <span className="hero-title-line block">Heart.</span>
                         </div>
                     </h1>
@@ -204,12 +205,13 @@ const AboutPage = () => {
                             </div>
                             <div className="px-4 text-center max-w-3xl mx-auto">
                                 <p className="text-2xl text-slate-300 leading-relaxed font-light mb-8">
-                                    With decades of experience in Vanasthalipuram, Hyderabad, Dr. T Suresh Babu has established a legacy of clinical excellence and compassionate care. He specializes in advanced canine diagnostics and dedicated surgical procedures, ensuring every pet receives world-class medical attention.
+                                    With over 15 years of dedicated service in Vanasthalipuram, Hyderabad, Dr. T Suresh Babu is a renowned expert in canine health. His clinic is a trusted sanctuary for dogs, offering everything from routine grooming to life-saving orthopedic surgeries.
                                 </p>
                                 <div className="flex flex-wrap justify-center gap-4">
-                                    <div className="px-6 py-3 rounded-full border border-slate-200 text-xs uppercase tracking-widest bg-white text-[#141E1E] font-bold shadow-sm">Advanced Canine Surgery</div>
-                                    <div className="px-6 py-3 rounded-full border border-slate-200 text-xs uppercase tracking-widest bg-white text-[#141E1E] font-bold shadow-sm">Diagnostic Expert</div>
-                                    <div className="px-6 py-3 rounded-full border border-slate-200 text-xs uppercase tracking-widest bg-white text-[#141E1E] font-bold shadow-sm">Compassionate Care Specialist</div>
+                                    <div className="px-6 py-3 rounded-full border border-slate-200 text-xs uppercase tracking-widest bg-white text-[#141E1E] font-bold shadow-sm">Orthopedic Surgery</div>
+                                    <div className="px-6 py-3 rounded-full border border-slate-200 text-xs uppercase tracking-widest bg-white text-[#141E1E] font-bold shadow-sm">Caesarean Section</div>
+                                    <div className="px-6 py-3 rounded-full border border-slate-200 text-xs uppercase tracking-widest bg-white text-[#141E1E] font-bold shadow-sm">Blood Transfusion</div>
+                                    <div className="px-6 py-3 rounded-full border border-slate-200 text-xs uppercase tracking-widest bg-white text-[#141E1E] font-bold shadow-sm">X-Ray Diagnostics</div>
                                 </div>
                             </div>
                         </div>
@@ -218,7 +220,7 @@ const AboutPage = () => {
             </section>
 
             {/* Achievements Section */}
-            <section className="achievements-section py-24 bg-white">
+            <section className="achievements-section py-24 bg-transparent relative z-10">
                 <div className="container mx-auto px-6 lg:px-12">
                     <div className="cinematic-header text-center mb-16">
                         <span className="header-item block font-serif italic text-gold-600 text-xl mb-4">Our Legacy of Excellence</span>
@@ -227,7 +229,7 @@ const AboutPage = () => {
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {achievements.map((item, i) => (
-                            <div key={i} className="achievement-card group p-10 rounded-[2.5rem] bg-[#FAF7F2] border border-[#141E1E]/5 hover:border-[#C5A572]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C5A572]/10">
+                            <div key={i} className="achievement-card glass-card group p-10 rounded-[2.5rem] transition-all duration-500 hover:shadow-2xl hover:shadow-[#C5A572]/10">
                                 <div className="w-16 h-16 bg-[#C5A572]/10 rounded-2xl flex items-center justify-center text-[#C5A572] mb-8 group-hover:scale-110 transition-transform duration-500">
                                     <item.icon className="w-8 h-8" />
                                 </div>
@@ -240,15 +242,30 @@ const AboutPage = () => {
                 </div>
             </section>
 
-            {/* Transitional Gallery */}
-            <CinematicGallery 
-                title="The Clinical Canvas"
-                images={[
-                    { url: "https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&q=80&w=800", title: "Precision Theater", category: "Surgery" },
-                    { url: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=800", title: "Molecular Lab", category: "Genetics" },
-                    { url: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=800", title: "Advanced Suite", category: "Diagnostics" }
-                ]}
-            />
+            {/* Justdial Impact Stats */}
+            <section className="py-24 bg-white relative overflow-hidden">
+                <div className="container mx-auto px-6 lg:px-12 relative z-10">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-12 p-12 md:p-20 rounded-[3.5rem] bg-[#141E1E] text-white">
+                        <div className="max-w-xl">
+                            <span className="text-[#C5A572] font-display uppercase tracking-[0.3em] text-sm mb-6 block">Proof of Excellence</span>
+                            <h2 className="text-4xl md:text-6xl font-display leading-[1.1] mb-8">Trusted by <br/><span className="italic font-serif text-[#C5A572]">Thousands</span> of Dogs.</h2>
+                            <p className="text-white/60 text-xl font-light leading-relaxed">
+                                Our reputation is built on 15 years of surgical precision and compassionate care in Vanasthalipuram.
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-2 gap-8 md:gap-16">
+                            <div className="text-center md:text-left">
+                                <div className="text-6xl md:text-8xl font-display text-[#C5A572] mb-2">4.7<span className="text-2xl opacity-40">/5</span></div>
+                                <div className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40">Patient Rating</div>
+                            </div>
+                            <div className="text-center md:text-left">
+                                <div className="text-6xl md:text-8xl font-display text-white mb-2">644+</div>
+                                <div className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#C5A572]">Verified Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Horizontal Timeline */}
             <section className="horizontal-wrapper relative h-screen bg-[#141E1E] overflow-hidden">
