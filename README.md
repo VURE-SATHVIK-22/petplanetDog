@@ -1,8 +1,6 @@
 # Dr. T Suresh Babu Veterinary Clinic
 ### *Premium Canine Diagnostics, Surgery & Compassionate Care*
 
-![Cinematic Banner](https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=1200&auto=format&fit=crop)
-
 A high-performance, cinematic web experience for **Dr. T Suresh Babu** (formerly Pet Planet Dog Clinic) in Hyderabad. This project showcases advanced veterinary diagnostics and surgical excellence through a premium, motion-driven interface.
 
 ---
