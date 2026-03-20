@@ -12,20 +12,38 @@ const Services = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.service-card', 
-        { y: 40, opacity: 0 },
+        { y: 60, opacity: 0, scale: 0.95 },
         {
           y: 0,
           opacity: 1,
-          stagger: 0.05,
-          duration: 0.8,
+          scale: 1,
+          stagger: 0.1,
+          duration: 1.2,
           ease: "expo.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 90%",
+            start: "top 80%",
             toggleActions: "play none none reverse"
           }
         }
       );
+
+      // Subtle Card Mouse Parallax
+      const handleMouseMove = (e) => {
+        const { clientX, clientY } = e;
+        const x = (clientX - window.innerWidth / 2) / 100;
+        const y = (clientY - window.innerHeight / 2) / 100;
+        
+        gsap.to('.service-card', {
+          x: (i) => x * (i + 1) * 0.5,
+          y: (i) => y * (i + 1) * 0.5,
+          duration: 1,
+          ease: "power2.out"
+        });
+      };
+
+      window.addEventListener('mousemove', handleMouseMove);
+      return () => window.removeEventListener('mousemove', handleMouseMove);
     }, containerRef);
 
     return () => ctx.revert();
@@ -45,9 +63,9 @@ const Services = () => {
       color: "bg-red-500/10"
     },
     {
-      title: "Grooming & Wellness",
+      title: "Essentials & Nutrition",
       icon: <Activity className="text-ios-green" />,
-      services: ["Bathing (Mange & Scabies)", "Pet Grooming", "Pet Food Available", "Pet Accessories"],
+      services: ["Clinical Diets", "Pet Food Available", "Pet Accessories", "Hygienic Grooming"],
       color: "bg-ios-green/10"
     }
   ];
@@ -68,14 +86,22 @@ const Services = () => {
 
         <div className="grid lg:grid-cols-3 gap-6">
           {categories.map((cat, i) => (
-            <GlassCard key={i} className="service-card group !p-10 hover:!bg-white/60 !rounded-[2.5rem] border-white/20 transition-all duration-700">
+            <GlassCard key={i} className="service-card group !p-10 hover:!bg-gray-50 !rounded-[2.5rem] border-gray-100 transition-all duration-700">
                <div className={`w-16 h-16 rounded-[1.5rem] ${cat.color} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-700`}>
                   {React.cloneElement(cat.icon, { size: 30 })}
                </div>
                
                <div className="space-y-6">
                   <h3 className="text-2xl font-display font-bold leading-tight">{cat.title}</h3>
-                  <ul className="space-y-3">
+                   
+                   {cat.image && (
+                     <div className="relative h-48 rounded-2xl overflow-hidden mb-6 group-hover:shadow-lg transition-all duration-700">
+                        <img src={cat.image} alt={cat.title} className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[2000ms]" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                     </div>
+                   )}
+
+                   <ul className="space-y-3">
                      {cat.services.map((item, j) => (
                        <li key={j} className="flex items-center justify-between text-ios-secondaryLabel font-bold text-[10px] uppercase tracking-widest border-b border-ios-label/5 pb-3 group/item hover:text-ios-blue transition-colors">
                           {item}

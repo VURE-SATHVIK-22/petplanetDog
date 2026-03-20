@@ -1,8 +1,7 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Phone, MapPin, Clock, Calendar, MessageSquare, Send } from 'lucide-react';
-import GlassCard from './GlassCard';
+import { Phone, MapPin, Clock, Send } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,11 +44,11 @@ const Contact = () => {
 
           <div className="grid gap-4">
              {[
-               { icon: <Phone />, title: "Clinic Hotline", val: "08867756183", sub: "Emergency Support" },
+               { icon: <Phone />, title: "Clinic Hotline", val: "9848954921", sub: "Emergency Support" },
                { icon: <MapPin />, title: "Clinic Address", val: "Beside Line Of Vivekanandha Park", sub: "Hyderabad, India" },
                { icon: <Clock />, title: "Operating Hours", val: "09:00 AM — 09:00 PM", sub: "Open Daily Including Sundays" }
              ].map((item, i) => (
-               <div key={i} className="contact-animate group p-8 glass-premium !rounded-[2rem] border-white/20 bg-white/30 hover:bg-white/60 transition-all duration-700 flex items-center gap-8">
+               <div key={i} className="contact-animate group p-8 glass-premium !rounded-[2rem] border-gray-100 bg-white hover:bg-gray-50 transition-all duration-700 flex items-center gap-8">
                   <div className="w-14 h-14 bg-ios-blue text-white rounded-[1.2rem] flex items-center justify-center shadow-lg shadow-ios-blue/20 group-hover:scale-110 transition-all duration-700">
                      {React.cloneElement(item.icon, { size: 24 })}
                   </div>
@@ -64,7 +63,7 @@ const Contact = () => {
         </div>
 
         <div className="relative">
-           <div className="contact-animate glass-premium !p-12 !rounded-[3.5rem] border-white/30 bg-white shadow-glass-heavy space-y-10 relative z-10">
+           <div className="contact-animate glass-premium !p-12 !rounded-[3.5rem] border-gray-100 bg-white shadow-sm space-y-10 relative z-10">
               <div className="space-y-2">
                  <h3 className="text-3xl font-display font-bold">Book Appointment</h3>
                  <p className="text-luxury text-sm">Submit your details to book a visit.</p>

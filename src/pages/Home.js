@@ -7,7 +7,9 @@ import About from '../components/About';
 import Services from '../components/Services';
 import Treatments from '../components/Treatments';
 import Highlights from '../components/Highlights';
+import Branches from '../components/Branches';
 import ReviewsSection from '../components/ReviewsSection';
+import BlogSection from '../components/BlogSection';
 import Contact from '../components/Contact';
 
 const Home = () => {
@@ -24,7 +26,9 @@ const Home = () => {
         <Services />
         <Treatments />
         <Highlights />
+        <Branches />
         <ReviewsSection />
+        <BlogSection />
         <Contact />
       </div>
     </motion.div>

@@ -10,6 +10,7 @@ import GlassNavbar from './components/GlassNavbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import WhatsAppButton from './components/WhatsAppButton';
+import CustomCursor from './components/CustomCursor';
 
 // Pages (To be built with Elite Theme)
 import Home from './pages/Home';
@@ -17,7 +18,8 @@ import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import DiagnosticsPage from './pages/DiagnosticsPage';
 import SurgeriesPage from './pages/SurgeriesPage';
-// import BlogPage from './pages/BlogPage';
+import BranchesPage from './pages/BranchesPage';
+import BlogPage from './pages/BlogPage';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,12 +27,12 @@ function App() {
 
   React.useLayoutEffect(() => {
     const lenis = new Lenis({
-      duration: 1.0,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.05, // Lower value = smoother, more "parallax" buttery feel
+      wheelMultiplier: 0.9,
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
+      smoothTouch: false,
       touchMultiplier: 2,
     });
 
@@ -66,7 +68,9 @@ function App() {
 
   return (
     <div className="bg-ios-bg text-ios-label min-h-screen">
+      <CustomCursor />
       <div className="global-grain" />
+      <div className="cinematic-vignette" />
       <ScrollToTop />
       <GlassNavbar />
       
@@ -77,6 +81,8 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/diagnostics" element={<DiagnosticsPage />} />
           <Route path="/surgeries" element={<SurgeriesPage />} />
+          <Route path="/branches" element={<BranchesPage />} />
+          <Route path="/blog" element={<BlogPage />} />
         </Routes>
       </AnimatePresence>
 

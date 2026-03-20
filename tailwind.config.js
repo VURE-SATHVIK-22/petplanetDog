@@ -4,16 +4,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Apple-inspired Elite Palette
+        // Clean Professional Clinic Palette
         ios: {
-          bg: '#FBFBFD',
-          secondaryBg: '#FFFFFF',
-          label: '#1D1D1F',
-          secondaryLabel: '#86868B',
-          blue: '#0071E3',
-          green: '#28CD41',
-          gold: '#D4AF37',
-          accent: '#0071E3',
+          bg: '#FFFFFF',
+          secondaryBg: '#F8FAFC',
+          label: '#0B1120',
+          secondaryLabel: '#475569',
+          blue: '#2563EB',
+          green: '#10B981',
+          gold: '#F59E0B',
+          accent: '#2563EB',
         },
         glass: {
           light: 'rgba(255, 255, 255, 0.45)',
@@ -23,8 +23,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        display: ['"Syne"', 'sans-serif'],
-        body: ['"Plus Jakarta Sans"', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'serif'],
+        body: ['"Inter"', 'sans-serif'],
       },
       boxShadow: {
         'glass-sm': '0 4px 12px 0 rgba(0, 0, 0, 0.05)',

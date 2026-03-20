@@ -53,7 +53,7 @@ const AboutPage = () => {
             </div>
             <h1 className="text-gradient leading-none">A Legacy of <br /> Expert Care.</h1>
             <p className="text-luxury text-3xl leading-snug">
-              Petplanet is where expert surgical skill meets compassionate animal care. Led by Dr. T Suresh Babu's 12+ years of surgical experience.
+              Dr. Suresh Pet Care Hospital and Surgical Center is where expert surgical skill meets compassionate animal care. Led by Dr. T Suresh Babu's 12+ years of surgical experience.
             </p>
           </div>
         </div>

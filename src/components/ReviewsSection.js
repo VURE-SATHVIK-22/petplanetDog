@@ -15,42 +15,42 @@ const ReviewsSection = () => {
       date: "Jan 2024",
       rating: 5,
       text: "Dr. Suresh Babu is exceptionally skilled. He performed a complex orthopedic surgery on my dog and the recovery was amazing. Highly recommend this clinic.",
-      source: "Justdial"
+      source: "Google"
     },
     {
       name: "Priyanka R",
       date: "Nov 2023",
       rating: 5,
       text: "Very professional and hygienic clinic. They have all lab facilities inside. The staff is caring and the response is very quick.",
-      source: "Justdial"
+      source: "Google"
     },
     {
       name: "Rahul G",
       date: "Feb 2024",
       rating: 4,
       text: "Experienced doctor. My pet got cured within 2 days of treatment. Highly recommend for any emergency situations.",
-      source: "Justdial"
+      source: "Google"
     },
     {
       name: "Anil Kumar",
       date: "Mar 2024",
       rating: 5,
       text: "Best boarding and surgical facility for dogs. Dr. Suresh treats every pet like his own. The clinic is very spacious and clean.",
-      source: "Justdial"
+      source: "Google"
     },
     {
       name: "Madhavi L",
       date: "Dec 2023",
       rating: 5,
-      text: "I was worried about my pet's skin infection for months. After visiting Petplanet, it cleared up in two weeks. Amazing care.",
-      source: "Justdial"
+      text: "I was worried about my pet's skin infection for months. After visiting Dr. Suresh's, it cleared up in two weeks. Amazing care.",
+      source: "Google"
     },
     {
       name: "Vikas T",
       date: "Jan 2024",
       rating: 5,
       text: "Highly equipped OT and diagnostic lab. The blood test results were very accurate and explained clearly by the doctor.",
-      source: "Justdial"
+      source: "Google"
     }
   ];
 
@@ -92,7 +92,7 @@ const ReviewsSection = () => {
             <div className="flex gap-1 text-ios-gold">
                {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
             </div>
-            <p className="text-luxury font-bold uppercase tracking-widest text-[9px] opacity-60">Verified Justdial Merit</p>
+            <p className="text-luxury font-bold uppercase tracking-widest text-[9px] opacity-60">Verified Google Reviews</p>
           </div>
           
           <div className="review-reveal flex gap-3">
@@ -107,8 +107,8 @@ const ReviewsSection = () => {
  
         <div className="lg:col-span-8">
            <div className="grid md:grid-cols-2 gap-6">
-             {reviews.map((review, index) => (
-               <GlassCard key={index} className="review-reveal !p-8 !rounded-[2.5rem] border-white/20 bg-white/40 shadow-glass space-y-8">
+             {reviews.slice(0, 4).map((review, index) => (
+               <GlassCard key={index} className="review-reveal !p-8 !rounded-[2.5rem] bg-white border-gray-100 shadow-sm space-y-8">
                  <div className="flex justify-between items-start">
                     <div className="bg-ios-gold/10 p-3 rounded-xl text-ios-gold">
                        <Quote size={20} />

@@ -28,13 +28,13 @@ const About = () => {
 
       // Image Parallax
       gsap.to('.about-image', {
-        yPercent: 15,
+        yPercent: 25,
         ease: "none",
         scrollTrigger: {
           trigger: '.about-image-wrap',
           start: "top bottom",
           end: "bottom top",
-          scrub: true
+          scrub: 1.2
         }
       });
     }, containerRef);
@@ -52,7 +52,7 @@ const About = () => {
                 <h2 className="about-animate text-gradient text-5xl">Best Veterinary <br /> <span className="italic font-normal">Care in Hyderabad.</span></h2>
               </div>
               <p className="about-animate text-luxury text-xl max-w-md opacity-80">
-                Since 2012, Petplanet Dog Clinic has provided top-quality surgical and diagnostic services in Hyderabad.
+                With 20+ years of experience, Dr. Suresh Pet Care Hospital and Surgical Center provides top-quality surgical and diagnostic services in Hyderabad.
               </p>
            </div>
         </div>
@@ -67,8 +67,8 @@ const About = () => {
                    { icon: <Heart className="text-red-500" />, title: "Compassion", desc: "Healing through empathy." },
                    { icon: <Shield className="text-ios-blue" />, title: "Protection", desc: "Advanced life defense." }
                  ].map((item, i) => (
-                   <div key={i} className="flex flex-col gap-4 p-6 glass-card-elite !rounded-[2rem] bg-white/30">
-                      <div className="bg-white p-3 rounded-[1.2rem] w-fit shadow-glass-sm border border-white/50">{item.icon}</div>
+                   <div key={i} className="flex flex-col gap-4 p-6 glass-card-elite !rounded-[2rem] bg-white">
+                      <div className="bg-white p-3 rounded-[1.2rem] w-fit shadow-sm border border-gray-100">{item.icon}</div>
                       <div>
                         <h4 className="font-bold text-lg leading-tight">{item.title}</h4>
                         <p className="text-[11px] text-ios-secondaryLabel font-bold uppercase tracking-widest mt-1">{item.desc}</p>
@@ -79,7 +79,7 @@ const About = () => {
            </div>
 
            <div className="about-animate glass-premium p-10 rounded-[2.5rem] bg-ios-blue text-white shadow-glass-heavy border-ios-blue/30 relative group overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 blur-[60px] group-hover:bg-white/20 transition-all duration-700" />
+              <div className="hidden" />
               <Quote className="text-white/20 mb-6" size={48} />
               <p className="text-2xl font-display font-medium leading-tight mb-8">
                 "We focus on the special bond between you and your pet by providing professional medical care."
@@ -107,7 +107,7 @@ const About = () => {
                    { val: '644+', lbl: 'Reviews' },
                    { val: '4.7', lbl: 'Rating' }
                  ].map((stat, i) => (
-                   <div key={i} className="glass-premium !bg-white/40 border-white/20 p-6 rounded-[2rem] backdrop-blur-2xl">
+                   <div key={i} className="glass-premium bg-black/40 backdrop-blur-xl border-white/20 p-6 rounded-[2rem]">
                       <p className="text-3xl font-bold font-display text-white">{stat.val}</p>
                       <p className="text-[10px] font-bold text-white/70 uppercase tracking-widest mt-1">{stat.lbl}</p>
                    </div>

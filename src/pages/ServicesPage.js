@@ -1,15 +1,12 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
-  Microscope,
   HeartPulse,
-  Activity,
   Stethoscope,
-  PawPrint,
+  Scissors,
   ShoppingBag,
   Sparkles,
   ShieldCheck,
-  Zap,
   ChevronRight,
   Clock,
   PhoneCall
@@ -72,7 +69,7 @@ const ServicesPage = () => {
     },
     {
       title: "Essentials & Nutrition",
-      subtitle: "The Petplanet Boutique",
+      subtitle: "The Clinic Boutique",
       desc: "A curated range of high-quality nutrition, safety gear, and lifestyle accessories for modern pet parenting.",
       icon: <ShoppingBag size={32} />,
       color: "bg-green-500",
@@ -82,8 +79,8 @@ const ServicesPage = () => {
         { name: "Pet Accessories", desc: "Quality collars, leashes, and safety equipment." },
         { name: "Healthcare Supplements", desc: "Vitamin and mineral support for growing pets." }
       ],
-      image: "/images/clinic/pharmacy_shop.png",
-      badge: "Boutique"
+      image: "/images/image.png",
+      badge: "Clinical Store"
     }
   ];
 
@@ -91,7 +88,7 @@ const ServicesPage = () => {
     const ctx = gsap.context(() => {
       // Hero Animation
       const tl = gsap.timeline({ defaults: { ease: "expo.out", duration: 0.8 } });
-      tl.fromTo('.service-hero-reveal', 
+      tl.fromTo('.service-hero-reveal',
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, stagger: 0.05 }
       );
@@ -152,7 +149,7 @@ const ServicesPage = () => {
         <div className="section-container space-y-40 lg:space-y-64">
           {serviceCategories.map((cat, i) => (
             <div key={i} className={`service-category flex flex-col lg:items-center gap-16 lg:gap-32 ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-              
+
               {/* Content Side */}
               <div className="lg:w-1/2 space-y-12">
                 <div className="space-y-6">
@@ -194,14 +191,14 @@ const ServicesPage = () => {
               <div className="lg:w-1/2">
                 <div className="category-animate relative">
                   <div className="glass-premium !p-5 !rounded-[4rem] shadow-glass-heavy border-white/40 aspect-[4/5] md:aspect-[16/11] overflow-hidden group">
-                    <img 
-                      src={cat.image} 
-                      alt={`Dr. T Suresh Babu ${cat.title} - Best Dog Clinic in Hyderabad`} 
+                    <img
+                      src={cat.image}
+                      alt={`Dr. T Suresh Babu ${cat.title} - Best Dog Clinic in Hyderabad`}
                       className="w-full h-full object-cover rounded-[2.8rem] scale-105 group-hover:scale-110 transition-transform duration-[2000ms] ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                   </div>
-                  
+
                   {/* Floating Stat Card */}
                   <div className="absolute -bottom-8 -right-8 glass-premium !p-8 !rounded-[2.5rem] shadow-glass-heavy border-white/60 backdrop-blur-2xl hidden md:block">
                     <div className="flex items-center gap-4">
@@ -227,7 +224,7 @@ const ServicesPage = () => {
         <div className="section-container">
           <GlassCard className="!bg-ios-label !border-ios-label/5 !p-12 md:!p-24 !rounded-[4rem] text-white flex flex-col lg:flex-row items-center justify-between gap-16 shadow-glass-heavy relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-[50%] h-[100%] bg-ios-blue/10 blur-[100px] rounded-full group-hover:bg-ios-blue/20 transition-colors duration-1000" />
-            
+
             <div className="space-y-8 relative z-10 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10">
                 <Clock size={14} className="text-ios-blue" />
@@ -262,7 +259,7 @@ const ServicesPage = () => {
       <footer className="py-20 opacity-40">
         <div className="section-container text-center">
           <p className="text-[9px] font-bold uppercase tracking-[0.4em] max-w-3xl mx-auto leading-relaxed">
-            Petplanet Dog Clinic - The Best Veterinary Clinic in Hyderabad. Directed by Dr. T Suresh Babu. Specializing in Dog Health, Cat Medicine, and Emergency Canine Surgery. Top-rated Pet Hospital for Vaccinations, Orthopedic Surgery, and Clinical Diagnostics.
+            Dr. Suresh Pet Care Hospital and Surgical Center - The Best Veterinary Clinic in Hyderabad. Directed by Dr. T Suresh Babu. Specializing in Dog Health, Cat Medicine, and Emergency Canine Surgery. Top-rated Pet Hospital for Vaccinations, Orthopedic Surgery, and Clinical Diagnostics.
           </p>
         </div>
       </footer>

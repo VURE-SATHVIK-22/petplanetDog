@@ -11,16 +11,17 @@ const Treatments = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo('.treat-reveal', 
-        { y: 30, opacity: 0 },
+        { y: 60, opacity: 0, scale: 0.98 },
         {
           y: 0,
           opacity: 1,
-          stagger: 0.05,
-          duration: 0.8,
+          scale: 1,
+          stagger: 0.08,
+          duration: 1.2,
           ease: "expo.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 90%",
+            start: "top 85%",
             toggleActions: "play none none reverse"
           }
         }

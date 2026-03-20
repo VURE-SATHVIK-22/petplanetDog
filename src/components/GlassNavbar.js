@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, PawPrint, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
 
 const GlassNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,26 +18,28 @@ const GlassNavbar = () => {
     { name: 'About Us', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Surgeries', path: '/surgeries' },
+    { name: 'Branches', path: '/branches' },
+    { name: 'Blog', path: '/blog' },
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-1000 ease-expo-in-out ${isScrolled ? 'py-4 px-6' : 'py-8 px-10'}`}>
-      <div className={`mx-auto transition-all duration-1000 ease-expo-in-out ${isScrolled ? 'max-w-5xl' : 'max-w-screen-2xl'}`}>
-        <div className={`glass-premium rounded-full px-8 py-3 flex items-center justify-between transition-all duration-1000 border-white/20 hover:border-white/40 ${isScrolled ? 'shadow-glass-heavy bg-white/60' : 'bg-white/30'}`}>
-          <Link to="/" className="flex items-center gap-3 group">
+    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 bg-white border-b border-gray-100 ${isScrolled ? 'py-3 shadow-sm' : 'py-5'}`}>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-3 group shrink-0">
             <div className="flex flex-col">
-              <span className="font-display font-bold text-xl leading-none tracking-tight">Petplanet</span>
-              <span className="text-[9px] uppercase tracking-[0.3em] text-ios-secondaryLabel font-bold opacity-80 mt-0.5">Dog Clinic</span>
+              <span className="font-display font-bold text-base leading-none tracking-tight whitespace-nowrap">Dr. Suresh Pet Care</span>
+              <span className="text-[7px] uppercase tracking-[0.2em] text-ios-secondaryLabel font-bold opacity-80 mt-0.5 whitespace-nowrap">Hospital & Surgical Center</span>
             </div>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className={`px-6 py-2 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-500 relative group ${
+                className={`px-3 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500 relative group shrink-0 ${
                   location.pathname === link.path ? 'text-ios-blue' : 'text-ios-label/70 hover:text-ios-label'
                 }`}
               >
@@ -49,7 +51,7 @@ const GlassNavbar = () => {
             ))}
             <div className="w-[1px] h-6 bg-ios-label/10 mx-4" />
             <a
-              href="tel:08867756183"
+              href="tel:9848954921"
               className="glass-button-primary !px-7 !py-2.5 !text-[11px] !tracking-[0.15em] flex items-center gap-2"
             >
               Emergency Call
@@ -84,7 +86,7 @@ const GlassNavbar = () => {
           ))}
           <div className="h-[1px] bg-ios-label/10 w-full" />
           <a
-            href="tel:08867756183"
+            href="tel:9848954921"
             className="glass-button-primary w-full text-center"
           >
             Sanctuary Hotline

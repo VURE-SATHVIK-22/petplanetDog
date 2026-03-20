@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="relative pt-40 pb-20 bg-ios-bg border-t border-ios-label/5 overflow-hidden">
       {/* Dynamic Background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[400px] bg-ios-blue/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="hidden" />
 
       <div className="section-container relative z-10">
         <div className="grid lg:grid-cols-12 gap-20">
@@ -19,18 +19,18 @@ const Footer = () => {
                         <PawPrint size={28} />
                       </div>
                       <div className="flex flex-col">
-                        <span className="font-display font-bold text-3xl leading-none tracking-tight">Petplanet</span>
-                        <span className="text-[10px] uppercase tracking-[0.4em] text-ios-secondaryLabel font-bold opacity-80 mt-1">Dog Clinic</span>
+                        <span className="font-display font-bold text-2xl leading-none tracking-tight whitespace-nowrap">Dr. Suresh's Pet Care</span>
+                        <span className="text-[9px] uppercase tracking-[0.3em] text-ios-secondaryLabel font-bold opacity-80 mt-1 whitespace-nowrap">Hospital & Surgical Center</span>
                       </div>
                    </Link>
                    <p className="text-luxury text-xl">
-                      Providing the best veterinary and surgical care for your pets since 2012.
+                      Providing the best veterinary and surgical care for your pets with over 20+ years of experience.
                    </p>
                 </div>
                 
                 <div className="flex flex-wrap gap-4">
                    {[Instagram, Twitter, Facebook].map((Icon, i) => (
-                     <button key={i} className="w-16 h-16 rounded-full glass-premium !bg-white/40 flex items-center justify-center hover:bg-ios-blue hover:text-white hover:border-ios-blue/30 transition-all duration-700">
+                     <button key={i} className="w-16 h-16 rounded-[1.5rem] bg-gray-50 border border-gray-100 flex items-center justify-center hover:bg-ios-blue hover:text-white transition-all duration-700">
                         <Icon size={20} />
                      </button>
                    ))}
@@ -43,10 +43,17 @@ const Footer = () => {
                <div>
                   <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] text-ios-secondaryLabel mb-8">Navigation</h4>
                   <ul className="space-y-4">
-                     {['Home', 'About Us', 'Services', 'Surgeries'].map((link) => (
-                       <li key={link}>
-                         <Link to="/" className="text-lg font-bold hover:text-ios-blue transition-colors flex items-center group">
-                            {link}
+                     {[
+                       {name: 'Home', path: '/'}, 
+                       {name: 'About Us', path: '/about'}, 
+                       {name: 'Services', path: '/services'}, 
+                       {name: 'Surgeries', path: '/surgeries'},
+                       {name: 'Branches', path: '/branches'},
+                       {name: 'Blog', path: '/blog'}
+                     ].map((link) => (
+                       <li key={link.name}>
+                         <Link to={link.path} className="text-lg font-bold hover:text-ios-blue transition-colors flex items-center group">
+                            {link.name}
                             <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-all" />
                          </Link>
                        </li>
@@ -70,7 +77,7 @@ const Footer = () => {
                   <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] text-ios-secondaryLabel mb-8">Direct Contact</h4>
                   <div className="space-y-6">
                      <div>
-                        <p className="text-lg font-bold">08867756183</p>
+                        <p className="text-lg font-bold">9848954921</p>
                         <p className="text-[10px] uppercase font-bold text-ios-secondaryLabel tracking-widest mt-1">24/7 Hotline</p>
                      </div>
                      <div>
@@ -101,7 +108,7 @@ const Footer = () => {
 
         <div className="mt-40 pt-10 border-t border-ios-label/5 flex flex-col md:flex-row justify-between gap-6">
            <p className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">
-              © 2026 Petplanet Dog Clinic — Signature of Excellence.
+              © 2026 Dr. Suresh Pet Care Hospital and Surgical Center — Signature of Excellence.
            </p>
            <div className="flex gap-10">
               <button className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40 hover:opacity-100 transition-opacity">Privacy Shield</button>

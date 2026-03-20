@@ -44,7 +44,7 @@ const DiagnosticsPage = () => {
               <h1 className="text-gradient">Best Diagnostic <br /> <span className="italic font-normal">Lab in Hyderabad.</span></h1>
             </div>
             <p className="text-luxury text-2xl pb-4">
-              Our high-precision diagnostic lab at Petplanet Dog Clinic ensures expert surgical care and complete pet checkups in Hyderabad.
+              Our high-precision diagnostic lab at Dr. Suresh Pet Care Hospital and Surgical Center ensures expert surgical care and complete pet checkups in Hyderabad.
             </p>
           </div>
         </div>
@@ -99,7 +99,7 @@ const DiagnosticsPage = () => {
                    <div className="glass-premium !p-6 !rounded-[3rem] shadow-glass-heavy overflow-hidden bg-white/40 border-white/30">
                       <img 
                         src="/images/WhatsApp Image 2026-01-23 at 11.59.20 PM.jpeg" 
-                        alt="Petplanet Diagnostic Lab" 
+                        alt="Dr. Suresh Diagnostic Lab" 
                         className="w-full aspect-video object-cover rounded-[2rem] mb-8"
                       />
                       <div className="space-y-6 px-6">
@@ -113,7 +113,7 @@ const DiagnosticsPage = () => {
                            </div>
                         </div>
                         <p className="text-luxury italic font-medium">
-                          "Precision in diagnosis is the foundation of surgical success at Petplanet."
+                          "Precision in diagnosis is the foundation of surgical success at Dr. Suresh's."
                         </p>
                       </div>
                    </div>

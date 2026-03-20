@@ -18,16 +18,16 @@ const Hero = () => {
     const ctx = gsap.context(() => {
       // Intial States Cleanup & Reveal Fix - FASTER LOAD
       const tl = gsap.timeline({ defaults: { ease: "expo.out", duration: 0.8 } });
-      
-      tl.fromTo('.hero-reveal', 
+
+      tl.fromTo('.hero-reveal',
         { y: 60, opacity: 0 },
         { y: 0, opacity: 1, stagger: 0.05, clearProps: "all" }
       )
-      .fromTo(glassRef.current,
-        { rotateY: -15, rotateX: 5, scale: 0.95, opacity: 0 },
-        { rotateY: 0, rotateX: 0, scale: 1, opacity: 1, duration: 1.2, clearProps: "transform" },
-        "-=0.5"
-      );
+        .fromTo(glassRef.current,
+          { rotateY: -15, rotateX: 5, scale: 0.95, opacity: 0 },
+          { rotateY: 0, rotateX: 0, scale: 1, opacity: 1, duration: 1.2, clearProps: "transform" },
+          "-=0.5"
+        );
 
       // Parallax Orbs (Cinematic Depth)
       gsap.to(orb1Ref.current, {
@@ -63,16 +63,59 @@ const Hero = () => {
         repeat: -1,
         yoyo: true
       });
-    }, containerRef);
 
-    return () => ctx.revert();
+      // Hero Image Parallax Layer
+      gsap.to('.hero-image-parallax', {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1.2,
+        }
+      });
+      // Magnetic Mouse Interaction
+      const handleMouseMove = (e) => {
+        const { clientX, clientY } = e;
+        const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+        const center = { x: left + width / 2, y: top + height / 2 };
+        
+        const moveX = (clientX - center.x) / 40;
+        const moveY = (clientY - center.y) / 40;
+
+        gsap.to(glassRef.current, {
+          x: moveX * 0.8,
+          y: moveY * 0.8,
+          rotateY: moveX * 0.5,
+          rotateX: -moveY * 0.5,
+          duration: 1,
+          ease: "power2.out"
+        });
+
+        gsap.to('.hero-magnetic', {
+          x: moveX * 0.4,
+          y: moveY * 0.4,
+          stagger: 0.02,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      };
+
+      containerRef.current.addEventListener('mousemove', handleMouseMove);
+
+      return () => {
+        containerRef.current?.removeEventListener('mousemove', handleMouseMove);
+        ctx.revert();
+      };
+    }, containerRef);
   }, []);
 
   return (
     <section ref={containerRef} className="relative min-h-[90vh] flex items-center overflow-hidden bg-ios-bg">
       {/* Dynamic Background Elements */}
-      <div ref={orb1Ref} className="absolute top-[10%] left-[-5%] w-[40vw] h-[40vw] rounded-full bg-ios-blue/10 blur-[120px] pointer-events-none" />
-      <div ref={orb2Ref} className="absolute bottom-[0%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-ios-blue/5 blur-[150px] pointer-events-none" />
+      <div ref={orb1Ref} className="hidden" />
+      <div ref={orb2Ref} className="hidden" />
 
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -80,9 +123,9 @@ const Hero = () => {
             <div className="space-y-6">
               <div className="hero-reveal inline-flex items-center gap-2 px-4 py-2 bg-ios-blue/5 backdrop-blur-md rounded-full border border-ios-blue/10">
                 <Sparkles size={14} className="text-ios-blue" />
-                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-ios-blue">Petplanet Dog Clinic</span>
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-ios-blue">Dr. Suresh Pet Care Hospital and Surgical Center</span>
               </div>
-              
+
               <div ref={titleRef} className="space-y-4">
                 <h1 className="hero-reveal text-gradient text-6xl md:text-7xl">
                   Best Dog Clinic for <br />
@@ -112,8 +155,8 @@ const Hero = () => {
               </div>
               <div className="w-[1px] h-12 bg-ios-label/10" />
               <div>
-                <p className="text-4xl font-bold font-display">12y</p>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-ios-secondaryLabel mt-1">Clinical Legacy</p>
+                <p className="text-4xl font-bold font-display">20+ Years</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-ios-secondaryLabel mt-1">Experience</p>
               </div>
             </div>
           </div>
@@ -121,15 +164,15 @@ const Hero = () => {
           <div className="relative perspective-1000">
             <div ref={glassRef} className="relative z-10 glass-card-elite aspect-square p-4 flex items-center justify-center">
               <div className="absolute inset-4 rounded-[2rem] overflow-hidden">
-                <img 
-                  src="/images/hero_dog_cinematic_1773573246596.png" 
-                  alt="Healthy Puppy at Petplanet Dog Clinic" 
-                  className="w-full h-full object-cover scale-110"
+                <img
+                  src="/images/hero_dog_cinematic_1773573246596.png"
+                  alt="Healthy Puppy at Dr. Suresh Pet Care"
+                  className="hero-image-parallax w-full h-full object-cover scale-125"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               </div>
 
-              <div className="absolute top-12 -left-8 animate-float">
+              <div className="absolute top-12 -left-8 animate-float hero-magnetic">
                 <GlassCard className="!p-6 !rounded-[2rem] shadow-glass-heavy border-white/20" hover={false}>
                   <div className="flex items-center gap-4">
                     <div className="bg-ios-blue text-white p-3 rounded-2xl">
@@ -143,7 +186,7 @@ const Hero = () => {
                 </GlassCard>
               </div>
 
-              <div className="absolute bottom-12 -right-12 delay-1000 animate-float" style={{ animationDelay: '2s' }}>
+              <div className="absolute bottom-12 -right-12 delay-1000 animate-float hero-magnetic" style={{ animationDelay: '2s' }}>
                 <GlassCard className="!p-6 !rounded-[2rem] shadow-glass-heavy border-white/20" hover={false}>
                   <div className="flex items-center gap-4">
                     <div className="bg-ios-green text-white p-3 rounded-2xl">

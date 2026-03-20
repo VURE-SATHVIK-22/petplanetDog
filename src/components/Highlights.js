@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Shield, FastForward, Award, Microscope, Heart } from 'lucide-react';
+import { Shield, FastForward, Activity, Microscope, Heart, Zap, Syringe } from 'lucide-react';
 import GlassCard from './GlassCard';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -32,11 +32,13 @@ const Highlights = () => {
   }, []);
 
   const highlightItems = [
-    { title: "Advanced Lab", icon: <Microscope /> },
-    { title: "Rapid Defense", icon: <FastForward /> },
-    { title: "Award Winner", icon: <Award /> },
-    { title: "Sterile Facility", icon: <Shield /> },
-    { title: "Kindness First", icon: <Heart /> }
+    { title: "Surgical Expert", icon: <Zap /> },
+    { title: "Advance Laboratory", icon: <Microscope /> },
+    { title: "X-Ray & Ultrasound", icon: <Activity /> },
+    { title: "Critical Care", icon: <Shield /> },
+    { title: "Hygienic Grooming", icon: <Heart /> },
+    { title: "Preventive Care", icon: <FastForward /> },
+    { title: "Vaccination", icon: <Syringe /> }
   ];
 
   return (
